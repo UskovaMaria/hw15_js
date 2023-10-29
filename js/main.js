@@ -1,5 +1,5 @@
 const doc = document;
-const slides = doc.querySelectorAll('.slide');
+let slides;
 const sliderBtns = doc.querySelectorAll('.slider-btn');
 const sliderDots = doc.querySelectorAll('.dot');
 const sliderEl = doc.querySelector('.slider__slides');
@@ -29,23 +29,27 @@ const sliderSlides = [
     },
 ]
 const btnFunc = [prevSlide, nexSlide];
-const slidesCount = slides.length;
+
 let currentSlide = 1;
 
 const postItems = sliderSlides.map(function (item) {
 return `
-    <div class="slide__img">
-        <img src="img/${item.img}" alt="">
-    </div>
-    <div class="slide-content">
-        <h3 class="slide-content__title">${item.title}</h3>
-        <p class="slide__text">${item.text}</p>
-    </div> 
+    <div class="slide">
+        <div class="slide__img">
+            <img src="img/${item.img}" alt="">
+        </div>
+        <div class="slide-content">
+            <h3 class="slide-content__title">${item.title}</h3>
+            <p class="slide__text">${item.text}</p>
+        </div>
+    </div>       
     `
 }).join('');
 
 sliderEl.innerHTML = postItems;
 console.log(postItems);
+slides = doc.querySelectorAll('.slide');
+const slidesCount = slides.length;
 
 setActiveSlide(currentSlide);
 
